@@ -10,7 +10,7 @@ parser.add_argument('--group', type=str, default='all', help='Group of character
 parser.add_argument('--count', type=int, default=25, help='Number of characters to practice')
 
 def main() -> None:
-    groups: list[str] = ["base", "dakuon", "combo", "small_っ", "long_vowel", "all"]
+    groups: list[str] = ["hiragana", "dakuon", "combo", "small_っ", "long_vowel", "all"]
 
     args: argparse.Namespace = parser.parse_args()
 
@@ -34,8 +34,8 @@ def main() -> None:
         return
 
     match group:
-        case "base":
-            results: dict[str, tuple[str, bool]] = testFromGroup(BASE, count)
+        case "hiragana":
+            results: dict[str, tuple[str, bool]] = testFromGroup(HIRAGANA, count)
         case "dakuon":
             results: dict[str, tuple[str, bool]] = testFromGroup(DAKUON, count)
         case "combo":

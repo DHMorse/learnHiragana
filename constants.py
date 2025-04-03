@@ -1,4 +1,4 @@
-BASE: dict[str, str] = {
+HIRAGANA: dict[str, str] = {
     "あ": "a",
     "い": "i",
     "う": "u",
