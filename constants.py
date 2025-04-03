@@ -150,7 +150,7 @@ LONG_VOWEL: dict[str, str] = {
 }
 
 ALL: dict[str, str] = {
-    **BASE,
+    **HIRAGANA,
     **DAKUON,
     **COMBO,
     **SMALL_っ,
