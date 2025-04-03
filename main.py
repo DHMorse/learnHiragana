@@ -1,6 +1,8 @@
 import argparse
 import random
-from termcolor import colored
+from rich.panel import Panel
+from rich.console import Console
+from rich.table import Table
 
 from constants import *
 
@@ -10,6 +12,7 @@ parser.add_argument('--group', type=str, default='all', help='Group of character
 parser.add_argument('--count', type=int, default=25, help='Number of characters to practice')
 
 def main() -> None:
+    console = Console()
     groups: list[str] = ["hiragana", "dakuon", "combo", "small_っ", "long_vowel", "all"]
 
     args: argparse.Namespace = parser.parse_args()
@@ -23,14 +26,12 @@ def main() -> None:
         try:
             count = int(input("Enter the number of characters to practice: ").strip())
         except ValueError:
-            print("Invalid input. Please enter a valid integer.")
+            console.print(Panel("Invalid input. Please enter a valid integer.", style="red"))
             return
 
     if group not in groups:
-        print(f"Invalid group: {group}")
-        print("Valid groups are:")
-        for g in groups:
-            print(f"  - {g}")
+        errorMsg = "Invalid group: " + group + "\nValid groups are:\n" + "\n".join(f"  - {g}" for g in groups)
+        console.print(Panel(errorMsg, style="red"))
         return
 
     match group:
@@ -50,19 +51,31 @@ def main() -> None:
             raise ValueError("Invalid group")
 
     correctCount = sum(1 for result in results.values() if result[1])
-    
     percentage = (correctCount / count) * 100
-    if percentage < 80:
-        print(f"\nYou got {colored(f'{percentage:.1f}%', 'red')} of the characters correct.")
-        print(f"You got {colored(f'{correctCount} out of {count}', 'red')} characters correct.")
-    else:
-        print(f"\nYou got {colored(f'{percentage:.1f}%', 'green')} of the characters correct.")
-        print(f"You got {colored(f'{correctCount} out of {count}', 'green')} characters correct.")
-    print(f"\n{colored('Incorrect answers:', 'red')}:")
+    
+    # Create results table
+    table = Table(show_header=True, header_style="bold magenta")
+    table.add_column("Metric", style="cyan")
+    table.add_column("Value", style="green" if percentage >= 80 else "red")
+    
+    table.add_row("Percentage", f"{percentage:.1f}%")
+    table.add_row("Correct Answers", f"{correctCount} out of {count}")
+    
+    # Create incorrect answers table
+    incorrect_table = Table(show_header=True, header_style="bold red")
+    incorrect_table.add_column("Character", style="cyan")
+    incorrect_table.add_column("Your Answer", style="red")
+    incorrect_table.add_column("Correct Answer", style="green")
     
     for char, (userInput, correct) in results.items():
         if not correct:
-            print(f"{char}: Your answer: {colored(userInput, 'red')} (correct: {colored(ALL[char], 'green')})")
+            incorrect_table.add_row(char, userInput, ALL[char])
+    
+    # Display results
+    console.print(Panel(table, title="Results", border_style="green" if percentage >= 80 else "red"))
+    
+    if incorrect_table.row_count > 0:
+        console.print(Panel(incorrect_table, title="Incorrect Answers", border_style="red"))
 
 
 
