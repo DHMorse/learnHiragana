@@ -4,16 +4,23 @@ from rich.panel import Panel
 from rich.console import Console
 from rich.table import Table
 
-from constants import *
+from constants import (
+    GROUPS,
+    HIRAGANA_BASE,
+    DAKUON,
+    COMBO,
+    SMALL_っ,
+    LONG_VOWEL,
+    HIRAGNA
+)
 
 # Define command line arguments
 parser = argparse.ArgumentParser(description='Learn Hiragana')
-parser.add_argument('--group', type=str, default='all', help='Group of characters to learn')
+parser.add_argument('--group', type=str, default='hiragana', help='Group of characters to learn')
 parser.add_argument('--count', type=int, default=25, help='Number of characters to practice')
 
 def main() -> None:
     console = Console()
-    groups: list[str] = ["hiragana", "dakuon", "combo", "small_っ", "long_vowel", "all"]
 
     args: argparse.Namespace = parser.parse_args()
 
@@ -29,24 +36,24 @@ def main() -> None:
             console.print(Panel("Invalid input. Please enter a valid integer.", style="red"))
             return
 
-    if group not in groups:
-        errorMsg = "Invalid group: " + group + "\nValid groups are:\n" + "\n".join(f"  - {g}" for g in groups)
+    if group not in GROUPS:
+        errorMsg = "Invalid group: " + group + "\nValid groups are:\n" + "\n".join(f"  - {g}" for g in GROUPS)
         console.print(Panel(errorMsg, style="red"))
         return
 
     match group:
         case "hiragana":
-            results: dict[str, tuple[str, bool]] = testFromGroup(HIRAGANA, count)
+            results: dict[str, tuple[str, bool]] = testFromGroup(HIRAGANA_BASE, count)
         case "dakuon":
-            results: dict[str, tuple[str, bool]] = testFromGroup(DAKUON, count)
+            results = testFromGroup(DAKUON, count)
         case "combo":
-            results: dict[str, tuple[str, bool]] = testFromGroup(COMBO, count)
+            results = testFromGroup(COMBO, count)
         case "small_っ":
-            results: dict[str, tuple[str, bool]] = testFromGroup(SMALL_っ, count)
+            results = testFromGroup(SMALL_っ, count)
         case "long_vowel":
-            results: dict[str, tuple[str, bool]] = testFromGroup(LONG_VOWEL, count)
+            results = testFromGroup(LONG_VOWEL, count)
         case "all":
-            results: dict[str, tuple[str, bool]] = testFromGroup(ALL, count)
+            results = testFromGroup(HIRAGNA, count)
         case _:
             raise ValueError("Invalid group")
 
@@ -69,7 +76,7 @@ def main() -> None:
     
     for char, (userInput, correct) in results.items():
         if not correct:
-            incorrect_table.add_row(char, userInput, ALL[char])
+            incorrect_table.add_row(char, userInput, HIRAGNA[char])
     
     # Display results
     console.print(Panel(table, title="Results", border_style="green" if percentage >= 80 else "red"))
