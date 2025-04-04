@@ -1,4 +1,4 @@
-GROUPS: list[str] = ["hiragana", "all", "hiragana_base", "dakuon", "combo", "small_っ", "long_vowel"]
+GROUPS: list[str] = ["hiragana", "all", "hiragana_base", "base", "dakuon", "combo", "small_っ", "long_vowel"]
 
 HIRAGANA_BASE: dict[str, str] = {
     "あ": "a",
@@ -151,7 +151,7 @@ LONG_VOWEL: dict[str, str] = {
     "おお": "oo"
 }
 
-HIRAGNA: dict[str, str] = {
+HIRAGANA: dict[str, str] = {
     **HIRAGANA_BASE,
     **DAKUON,
     **COMBO,

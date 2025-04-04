@@ -11,7 +11,7 @@ from constants import (
     COMBO,
     SMALL_っ,
     LONG_VOWEL,
-    HIRAGNA
+    HIRAGANA
 )
 
 # Define command line arguments
@@ -42,8 +42,10 @@ def main() -> None:
         return
 
     match group:
-        case "hiragana":
+        case "base":
             results: dict[str, tuple[str, bool]] = testFromGroup(HIRAGANA_BASE, count)
+        case "hiragana_base":
+            results = testFromGroup(HIRAGANA_BASE, count)
         case "dakuon":
             results = testFromGroup(DAKUON, count)
         case "combo":
@@ -52,8 +54,10 @@ def main() -> None:
             results = testFromGroup(SMALL_っ, count)
         case "long_vowel":
             results = testFromGroup(LONG_VOWEL, count)
+        case "hiragana":
+            results = testFromGroup(HIRAGANA, count)
         case "all":
-            results = testFromGroup(HIRAGNA, count)
+            results = testFromGroup(HIRAGANA, count)
         case _:
             raise ValueError("Invalid group")
 
@@ -76,7 +80,7 @@ def main() -> None:
     
     for char, (userInput, correct) in results.items():
         if not correct:
-            incorrect_table.add_row(char, userInput, HIRAGNA[char])
+            incorrect_table.add_row(char, userInput, HIRAGANA[char])
     
     # Display results
     console.print(Panel(table, title="Results", border_style="green" if percentage >= 80 else "red"))
