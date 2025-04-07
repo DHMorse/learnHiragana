@@ -20,12 +20,22 @@ A command-line interface (CLI) program designed to help users learn and practice
 
 1. Clone this repository:
 ```bash
-git clone https://github.com/yourusername/learnHiragana.git
+git clone https://github.com/DHMorse/learnHiragana
 cd learnHiragana
 ```
+## uv
 
-2. Install the required dependencies:
+2. Install dependencies:
 ```bash
+uv sync
+```
+
+## pip
+
+2. Install dependencies:
+```bash
+python3 -m venv venv
+source venv/bin/activate
 pip install -r requirements.txt
 ```
 
@@ -33,7 +43,7 @@ pip install -r requirements.txt
 
 Run the program with default settings (25 characters from all groups):
 ```bash
-python main.py
+python src/main.py
 ```
 
 ### Command Line Arguments
@@ -65,8 +75,3 @@ After completing the practice session, you'll receive:
 ## Requirements
 
 - Python 3.10 or higher
-- termcolor package
-
-## License
-
-[Your chosen license]
