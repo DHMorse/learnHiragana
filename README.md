@@ -56,14 +56,8 @@ python src/main.py
 
 Example:
 ```bash
-python main.py --group base --count 10
+python src/main.py --group base --count 10
 ```
-
-### Interactive Mode
-
-If no arguments are provided, the program will prompt you to:
-1. Enter the group of characters you want to practice
-2. Specify how many characters you want to test
 
 ## Results
 
