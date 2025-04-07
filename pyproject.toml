@@ -10,3 +10,6 @@ dependencies = [
     "pytest>=8.3.5",
     "rich>=14.0.0",
 ]
+
+[tool.hatch.build]
+sources = ["learnhiragana"]
