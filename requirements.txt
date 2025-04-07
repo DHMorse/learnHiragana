@@ -1,0 +1,15 @@
+deprecated==1.2.18
+iniconfig==2.1.0
+jaconv==0.4.0
+markdown-it-py==3.0.0
+mdurl==0.1.2
+nuitka==2.6.9
+ordered-set==4.1.0
+packaging==24.2
+pluggy==1.5.0
+pygments==2.19.1
+pykakasi==2.3.0
+pytest==8.3.5
+rich==14.0.0
+wrapt==1.17.2
+zstandard==0.23.0

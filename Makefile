@@ -7,6 +7,9 @@ run:
 dev:
 	python src/main.py
 
+test:
+	python -m pytest tests
+
 clean:
 	rm -rf dist
 	rm -rf build

@@ -111,9 +111,9 @@ COMBO: dict[str, str] = {
     "ちゅ": "chu",
     "ちょ": "cho",
 
-    "ぢゃ": "nya",
-    "ぢゅ": "nyu",
-    "ぢょ": "nyo",
+    "ぢゃ": "ja",
+    "ぢゅ": "ju",
+    "ぢょ": "jo",
 
     "ひゃ": "hya",
     "ひゅ": "hyu",
@@ -137,10 +137,10 @@ COMBO: dict[str, str] = {
 }
 
 SMALL_っ: dict[str, str] = {
-    "っ+k": "kk",
-    "っ+s": "ss",
-    "っ+t": "tt",
-    "っ+p": "pp"
+    "っか": "kka",
+    "っさ": "ssa",
+    "った": "tta",
+    "っぱ": "ppa"
 }
 
 LONG_VOWEL: dict[str, str] = {

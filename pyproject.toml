@@ -6,5 +6,7 @@ readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
     "nuitka>=2.6.9",
+    "pykakasi>=2.3.0",
+    "pytest>=8.3.5",
     "rich>=14.0.0",
 ]
