@@ -43,7 +43,11 @@ pip install -r requirements.txt
 
 Run the program with default settings (25 characters from all groups):
 ```bash
-python src/main.py
+uv run learnHiragana/main.py
+```
+or
+```bash
+python learnHiragana/main.py
 ```
 
 ### Command Line Arguments
@@ -56,7 +60,11 @@ python src/main.py
 
 Example:
 ```bash
-python src/main.py --group base --count 10
+uv run learnHiragana/main.py --group base --count 10
+```
+or
+```bash
+python learnHiragana/main.py --group base --count 10
 ```
 
 ## Results
@@ -69,3 +77,4 @@ After completing the practice session, you'll receive:
 ## Requirements
 
 - Python 3.10 or higher
+- pip or uv
