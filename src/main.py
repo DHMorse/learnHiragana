@@ -4,7 +4,7 @@ from rich.panel import Panel
 from rich.console import Console
 from rich.table import Table
 
-from src.constants import (
+from constants import (
     GROUPS,
     HIRAGANA_BASE,
     DAKUON,
