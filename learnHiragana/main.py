@@ -75,12 +75,12 @@ def main() -> None:
     # Create incorrect answers table
     incorrect_table = Table(show_header=True, header_style="bold red")
     incorrect_table.add_column("Character", style="cyan")
+    incorrect_table.add_column("Correct Romaji", style="green")
     incorrect_table.add_column("Your Answer", style="red")
-    incorrect_table.add_column("Correct Answer", style="green")
     
     for char, (userInput, correct) in results.items():
         if not correct:
-            incorrect_table.add_row(char, userInput, HIRAGANA[char])
+            incorrect_table.add_row(char, HIRAGANA[char], userInput)
     
     # Display results
     console.print(Panel(table, title="Results", border_style="green" if percentage >= 80 else "red"))
