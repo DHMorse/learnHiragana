@@ -19,7 +19,7 @@ from constants import (
 parser = argparse.ArgumentParser(description='Learn Hiragana')
 parser.add_argument('--group', type=str, default='hiragana', help='Group of characters to learn')
 parser.add_argument('--count', type=int, default=25, help='Number of characters to practice')
-parser.add_argument('--mode', type=str, default='romaji', help='Mode to run in')
+parser.add_argument('--mode', type=str, default='romaji', help='Mode to run in. "romaji" or "hiragana"')
 
 def main() -> None:
     console = Console()
@@ -41,6 +41,11 @@ def main() -> None:
     if group not in GROUPS:
         errorMsg = "Invalid group: " + group + "\nValid groups are:\n" + "\n".join(f"  - {g}" for g in GROUPS)
         console.print(Panel(errorMsg, style="red"))
+        return
+
+    mode: str = args.mode.strip().lower()
+    if mode not in ["romaji", "hiragana"]:
+        console.print(Panel("Invalid mode: " + mode + "\nValid modes are: 'romaji' or 'hiragana'", style="red"))
         return
 
     match group:
@@ -113,14 +118,14 @@ def testFromGroup(group: dict[str, str], count: int) -> dict[str, tuple[str, boo
         raise ValueError(f"Count ({count}) cannot be greater than the number of available characters ({len(group)})")
     
     results: dict[str, tuple[str, bool]] = {}
-    available_chars: list[str] = list(group.keys())
+    availableChars: list[str] = list(group.keys())
 
     for i in range(count):
-        key: str = random.choice(available_chars)
-        available_chars.remove(key)  # Remove the selected character from available options
+        key: str = random.choice(availableChars)
+        availableChars.remove(key)  # Remove the selected character from available options
         value: str = group[key]
         userInput: str = input(f"Enter the romaji for {key}: ")
-        results[key] = (userInput, userInput == value)
+        results[key] = (userInput, userInput.strip().lower() == value.lower())
 
     return results
 
