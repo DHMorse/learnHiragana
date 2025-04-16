@@ -1,0 +1,7 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+
+# Prefer to use a functional approach over an object oriented one. 

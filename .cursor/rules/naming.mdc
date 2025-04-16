@@ -1,0 +1,10 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+
+# When naming anything you should follow these standards 
+
+- Use camleCase naming when at all possible
+- You should always try to be as descriptive as possible while staying concise

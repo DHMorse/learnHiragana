@@ -1,4 +1,5 @@
 import argparse
+
 import random
 from rich.panel import Panel
 from rich.console import Console
@@ -18,6 +19,7 @@ from constants import (
 parser = argparse.ArgumentParser(description='Learn Hiragana')
 parser.add_argument('--group', type=str, default='hiragana', help='Group of characters to learn')
 parser.add_argument('--count', type=int, default=25, help='Number of characters to practice')
+parser.add_argument('--mode', type=str, default='romaji', help='Mode to run in')
 
 def main() -> None:
     console = Console()
@@ -99,18 +101,23 @@ def testFromGroup(group: dict[str, str], count: int) -> dict[str, tuple[str, boo
     Returns:
         dict[str, tuple[str, bool]] - Dictionary mapping tested hiragana characters to a tuple of (user input, whether correct)
     Raises:
-        ValueError - If count is not a positive integer or group is not a dictionary
+        ValueError - If count is not a positive integer, group is not a dictionary, or count exceeds available characters
     """
     if not count or count <= 0 or type(count) != int:
         raise ValueError("Count must be greater than 0 and an integer")
 
     if not group or type(group) != dict:
         raise ValueError("Group must be a dictionary")
+        
+    if count > len(group):
+        raise ValueError(f"Count ({count}) cannot be greater than the number of available characters ({len(group)})")
     
     results: dict[str, tuple[str, bool]] = {}
+    available_chars: list[str] = list(group.keys())
 
     for i in range(count):
-        key: str = random.choice(list(group.keys()))
+        key: str = random.choice(available_chars)
+        available_chars.remove(key)  # Remove the selected character from available options
         value: str = group[key]
         userInput: str = input(f"Enter the romaji for {key}: ")
         results[key] = (userInput, userInput == value)

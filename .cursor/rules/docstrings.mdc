@@ -1,0 +1,46 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+
+# When ever writing a function you should ALWAYS have a docstring
+
+## This is a good example of a docstring
+
+```python
+def exampleFunction(param1, param2=42):
+    """
+    Brief one-line summary of the function.
+
+    More detailed explanation of the function, its purpose, and any background
+    information or side effects. This can span multiple lines.
+
+    Parameters
+    ----------
+    param1 : type
+        Description of the first parameter.
+    param2 : type, optional
+        Description of the second parameter (default is 42).
+
+    Returns
+    -------
+    return_type
+        Description of what is returned.
+
+    Raises
+    ------
+    ExceptionType
+        Description of the exception and the condition under which it is raised.
+
+    Examples
+    --------
+    >>> example_function('hello')
+    'Processed: hello'
+
+    Notes
+    -----
+    Additional information about the implementation, limitations, or references.
+    """
+    pass
+```

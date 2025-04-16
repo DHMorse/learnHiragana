@@ -1,0 +1,13 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+
+# You should ALWAYS type annotate. When type annotating you should do the following:
+
+- Use python's built in type annotations when possible
+- Type annotate your functions
+- Type annotate your varibles fully
+
+- Your type annotations should be as descriptive as possible
