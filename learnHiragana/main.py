@@ -24,7 +24,6 @@ from constants import (
 parser = argparse.ArgumentParser(description='Learn Hiragana')
 parser.add_argument('--group', type=str, default='hiragana', help='Group of characters to learn')
 parser.add_argument('--count', type=int, default=25, help='Number of characters to practice')
-parser.add_argument('--mode', type=str, default='romaji', help='Mode to run in. "romaji" or "hiragana"')
 
 def main() -> None:
     console = Console()
@@ -46,11 +45,6 @@ def main() -> None:
     if group not in GROUPS:
         errorMsg = "Invalid group: " + group + "\nValid groups are:\n" + "\n".join(f"  - {g}" for g in GROUPS)
         console.print(Panel(errorMsg, style="red"))
-        return
-
-    mode: str = args.mode.strip().lower()
-    if mode not in ["romaji", "hiragana"]:
-        console.print(Panel("Invalid mode: " + mode + "\nValid modes are: 'romaji' or 'hiragana'", style="red"))
         return
 
     match group:
