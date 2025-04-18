@@ -1,4 +1,18 @@
-GROUPS: list[str] = ["hiragana", "all", "hiragana_base", "base", "dakuon", "combo", "small_っ", "long_vowel"]
+GROUPS: list[str] = [
+    "hiragana", 
+    "all", 
+    "hiragana_base", 
+    "base", 
+    "dakuon", 
+    "combo", 
+    "small_っ", 
+    "long_vowel", 
+    "katakana", 
+    "katakana_base", 
+    "katakana_dakuon", 
+    "katakana_combo", 
+    "small_ッ"
+]
 
 HIRAGANA_BASE: dict[str, str] = {
     "あ": "a",
@@ -157,4 +171,155 @@ HIRAGANA: dict[str, str] = {
     **COMBO,
     **SMALL_っ,
     **LONG_VOWEL   
+}
+
+KATAKANA_BASE: dict[str, str] = {
+    "ア": "a",
+    "イ": "i",
+    "ウ": "u",
+    "エ": "e",
+    "オ": "o",
+
+    "カ": "ka",
+    "キ": "ki",
+    "ク": "ku",
+    "ケ": "ke",
+    "コ": "ko",
+    
+    "サ": "sa",
+    "シ": "shi",
+    "ス": "su",
+    "セ": "se",
+    "ソ": "so",
+    
+    "タ": "ta",
+    "チ": "chi",
+    "ツ": "tsu",
+    "テ": "te",
+    "ト": "to",
+
+    "ナ": "na",
+    "ニ": "ni",
+    "ヌ": "nu",
+    "ネ": "ne",
+    "ノ": "no",
+
+    "ハ": "ha",
+    "ヒ": "hi",
+    "フ": "fu",
+    "ヘ": "he",
+    "ホ": "ho",
+
+    "マ": "ma",
+    "ミ": "mi",
+    "ム": "mu",
+    "メ": "me",
+    "モ": "mo",
+    
+    "ヤ": "ya",
+    "ユ": "yu",
+    "ヨ": "yo",
+
+    "ラ": "ra",
+    "リ": "ri",
+    "ル": "ru",
+    "レ": "re",
+    "ロ": "ro",
+
+    "ワ": "wa",
+    "ヲ": "wo",
+
+    "ン": "n"
+}
+
+KATAKANA_DAKUON: dict[str, str] = {
+    "ガ": "ga",
+    "ギ": "gi",
+    "グ": "gu",
+    "ゲ": "ge",
+    "ゴ": "go",
+
+    "ザ": "za",
+    "ジ": "ji",
+    "ズ": "zu",
+    "ゼ": "ze",
+    "ゾ": "zo",
+
+    "ダ": "da",
+    "ヂ": "ji",
+    "ヅ": "zu",
+    "デ": "de",
+    "ド": "do",
+
+    "バ": "ba",
+    "ビ": "bi",
+    "ブ": "bu",
+    "ベ": "be",
+    "ボ": "bo",
+
+    "パ": "pa",
+    "ピ": "pi",
+    "プ": "pu",
+    "ペ": "pe",
+    "ポ": "po"
+}
+
+KATAKANA_COMBO: dict[str, str] = {
+    "キャ": "kya",
+    "キュ": "kyu",
+    "キョ": "kyo",
+
+    "ギャ": "gya",
+    "ギュ": "gyu",
+    "ギョ": "gyo",
+
+    "シャ": "sha",
+    "シュ": "shu",
+    "ショ": "sho",
+
+    "ジャ": "ja",
+    "ジュ": "ju",
+    "ジョ": "jo",
+    
+    "チャ": "cha",
+    "チュ": "chu",
+    "チョ": "cho",
+
+    "ニャ": "nya",
+    "ニュ": "nyu",
+    "ニョ": "nyo",
+
+    "ヒャ": "hya",
+    "ヒュ": "hyu",
+    "ヒョ": "hyo",
+    
+    "ビャ": "bya",
+    "ビュ": "byu",
+    "ビョ": "byo",
+
+    "ピャ": "pya",
+    "ピュ": "pyu",
+    "ピョ": "pyo",
+
+    "ミャ": "mya",
+    "ミュ": "myu",
+    "ミョ": "myo",
+    
+    "リャ": "rya",
+    "リュ": "ryu",
+    "リョ": "ryo"
+}
+
+SMALL_ッ: dict[str, str] = {
+    "ッ+k": "kk",
+    "ッ+s": "ss",
+    "ッ+t": "tt",
+    "ッ+p": "pp"
+}
+
+KATAKANA: dict[str, str] = {
+    **KATAKANA_BASE,
+    **KATAKANA_DAKUON,
+    **KATAKANA_COMBO,
+    **SMALL_ッ
 }

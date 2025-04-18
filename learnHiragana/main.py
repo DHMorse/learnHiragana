@@ -12,7 +12,12 @@ from constants import (
     COMBO,
     SMALL_っ,
     LONG_VOWEL,
-    HIRAGANA
+    HIRAGANA,
+    KATAKANA_BASE,
+    KATAKANA_DAKUON,
+    KATAKANA_COMBO,
+    SMALL_ッ,
+    KATAKANA
 )
 
 # Define command line arguments
@@ -63,8 +68,18 @@ def main() -> None:
             results = testFromGroup(LONG_VOWEL, count)
         case "hiragana":
             results = testFromGroup(HIRAGANA, count)
+        case "katakana":
+            results = testFromGroup(KATAKANA, count)
+        case "katakana_base":
+            results = testFromGroup(KATAKANA_BASE, count)
+        case "katakana_dakuon":
+            results = testFromGroup(KATAKANA_DAKUON, count)
+        case "katakana_combo":
+            results = testFromGroup(KATAKANA_COMBO, count)
+        case "small_ッ":
+            results = testFromGroup(SMALL_ッ, count)
         case "all":
-            results = testFromGroup(HIRAGANA, count)
+            results = testFromGroup(HIRAGANA | KATAKANA, count)
         case _:
             raise ValueError("Invalid group")
 
