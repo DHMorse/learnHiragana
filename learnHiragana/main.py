@@ -95,20 +95,21 @@ def main() -> None:
     table.add_row("Correct Answers", f"{correctCount} out of {count}")
     
     # Create incorrect answers table
-    incorrect_table = Table(show_header=True, header_style="bold red")
-    incorrect_table.add_column("Character", style="cyan")
-    incorrect_table.add_column("Correct Romaji", style="green")
-    incorrect_table.add_column("Your Answer", style="red")
+    incorrectTable = Table(show_header=True, header_style="bold red")
+    incorrectTable.add_column("Character", style="cyan")
+    incorrectTable.add_column("Correct Romaji", style="green")
+    incorrectTable.add_column("Your Answer", style="red")
     
     for char, (userInput, correct) in results.items():
         if not correct:
-            incorrect_table.add_row(char, HIRAGANA[char], userInput)
+            correctRomaji = HIRAGANA.get(char) or KATAKANA.get(char)
+            incorrectTable.add_row(char, correctRomaji, userInput)
     
     # Display results
     console.print(Panel(table, title="Results", border_style="green" if percentage >= 80 else "red"))
     
-    if incorrect_table.row_count > 0:
-        console.print(Panel(incorrect_table, title="Incorrect Answers", border_style="red"))
+    if incorrectTable.row_count > 0:
+        console.print(Panel(incorrectTable, title="Incorrect Answers", border_style="red"))
 
 
 
